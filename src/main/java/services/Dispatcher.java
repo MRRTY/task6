@@ -8,6 +8,8 @@ import java.util.*;
 
 public class Dispatcher {
     private static DatabaseManager databaseManager = DatabaseManager.getInstance();
+
+
     private static Database currentDatabase = null;
     private static Table currentTable = null;
 
@@ -161,5 +163,21 @@ public class Dispatcher {
         String oldName = commandLine[0];
         String newName = commandLine[1];
         currentTable.getColumnByName(oldName).setName(newName);
+    }
+
+    public static Database getCurrentDatabase() {
+        return currentDatabase;
+    }
+
+    public static Table getCurrentTable() {
+        return currentTable;
+    }
+
+    public static void setCurrentDatabase(Database currentDatabase) {
+        Dispatcher.currentDatabase = currentDatabase;
+    }
+
+    public static void setCurrentTable(Table currentTable) {
+        Dispatcher.currentTable = currentTable;
     }
 }
